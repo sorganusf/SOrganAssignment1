@@ -10,18 +10,15 @@ namespace SOrganAssignment1
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter a number: ");
-            string input = Console.ReadLine();
-            int n = Convert.ToInt32(input);
-
-            int answer = 0;
-
-            for (int i = 1; i <= n; i++)
+            for (int z = 5; z >= 1; z--)
             {
-                answer = i * (i + 1) / 2;
-
-                Console.Write(answer + ", ");
+                for (int x = z; x > 0; x--)
+                {
+                    Console.Write(x);
+                }
+                Console.WriteLine();
             }
+            Console.ReadLine();
         }
     }
 }
