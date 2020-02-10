@@ -10,17 +10,51 @@ namespace SOrganAssignment1
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter a number: ");
-            string input = Console.ReadLine();
-            int n = Convert.ToInt32(input);
 
-            int answer = 0;
-
-            for (int i = 1; i <= n; i++)
+            for (int number = 1; number <= 110; ++number)
             {
-                answer = i * (i + 1) / 2;
+                bool remainder = false;
 
-                Console.Write(answer + ", ");
+                if (number % 3 == 0 && number % 5 == 0 && number % 7 == 0)
+                {
+                    Console.Write("USF");
+                    remainder = true;
+                }
+
+                else if (number % 3 == 0 && number % 5 == 0)
+                {
+                    Console.Write("US");
+                    remainder = true;
+                }
+                else if (number % 5 == 0 && number % 7 == 0)
+                {
+                    Console.Write("SF");
+                    remainder = true;
+                }
+                else if (number % 3 == 0)
+                {
+                    Console.Write("U");
+                    remainder = true;
+                }
+                else if (number % 7 == 0)
+                {
+                    Console.Write("F");
+                    remainder = true;
+                }
+                else if (number % 5 == 0)
+                {
+                    Console.Write("S");
+                    remainder = true;
+                }
+                if (!remainder)
+                {
+                    Console.Write(number);
+                }
+                Console.Write(" ");
+                if (number % 10 == 0)
+                {
+                    Console.WriteLine();
+                }
             }
             Console.ReadLine();
         }
