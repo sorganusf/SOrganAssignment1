@@ -8,54 +8,73 @@ namespace SOrganAssignment1
 {
     class Program
     {
-        static void Main(string[] args)
+        public static string UsfTime(string s)
         {
+            int U1 = (int)s[0] - '0';
+            int U2 = (int)s[1] - '0';
+            int S1 = (int)s[3] - '0';
+            int S2 = (int)s[4] - '0';
+            int F1 = (int)s[6] - '0';
+            int F2 = (int)s[7] - '0';
+            int UU = (U1 * 10 + U2 % 10);
+            int SS = (S1 * 10 + S2 % 10);
+            int FF = (F1 * 10 + F2 % 10);
 
-            for (int number = 1; number <= 110; ++number)
+            if (s[8] == 'A')
             {
-                bool remainder = false;
-
-                if (number % 3 == 0 && number % 5 == 0 && number % 7 == 0)
+                int uCounter = 0;
+                int sCounter = 0;
+                int fCounter = 0;
+                int totalCount;
+                int timeChange = ((UU * 3600) + (SS * 60) + FF);
+                for (totalCount = 1; totalCount <= timeChange; totalCount++)
                 {
-                    Console.Write("USF");
-                    remainder = true;
+                    if (fCounter <= 44)
+                    {
+                        fCounter++;
+                    }
+                    if (fCounter > 44)
+                    {
+                        sCounter++;
+                        fCounter = 0;
+                    }
                 }
-
-                else if (number % 3 == 0 && number % 5 == 0)
-                {
-                    Console.Write("US");
-                    remainder = true;
-                }
-                else if (number % 5 == 0 && number % 7 == 0)
-                {
-                    Console.Write("SF");
-                    remainder = true;
-                }
-                else if (number % 3 == 0)
-                {
-                    Console.Write("U");
-                    remainder = true;
-                }
-                else if (number % 7 == 0)
-                {
-                    Console.Write("F");
-                    remainder = true;
-                }
-                else if (number % 5 == 0)
-                {
-                    Console.Write("S");
-                    remainder = true;
-                }
-                if (!remainder)
-                {
-                    Console.Write(number);
-                }
-                Console.Write(" ");
-                if (number % 10 == 0)
-                {
-                    Console.WriteLine();
-                }
+                Console.Write(uCounter + ":" + sCounter + ":" + fCounter);
             }
+            else
+            {
+                UU = UU + 12;
+                int uCounter = 0;
+                int sCounter = 0;
+                int fCounter = 0;
+                int totalCount;
+                int timeChange = ((UU * 3600) + SS * 60) + FF;
+                for (totalCount = 0; totalCount < timeChange; totalCount++)
+                {
+                    if (fCounter <= 44)
+                    {
+                        fCounter++;
+                    }
+                    if (fCounter > 44)
+                    {
+                        sCounter++;
+                        fCounter = 0;
+                    }
+                    if (sCounter > 59)
+                    {
+                        uCounter++;
+                        sCounter = 0;
+                    }
+                }
+                Console.WriteLine(uCounter + ":" + sCounter + ":" + fCounter);
+            }
+            return s;
+        }
+        public static void Main(string[] args)
+        {
+            string s = "09:15:35PM";
+            Console.WriteLine(s);
+            string t = UsfTime(s);
             Console.ReadLine();
         }
     }
