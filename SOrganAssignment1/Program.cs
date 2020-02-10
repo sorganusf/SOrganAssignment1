@@ -10,13 +10,17 @@ namespace SOrganAssignment1
     {
         static void Main(string[] args)
         {
-            for (int z = 5; z >= 1; z--)
+            Console.Write("Enter a number: ");
+            string input = Console.ReadLine();
+            int n = Convert.ToInt32(input);
+
+            int answer = 0;
+
+            for (int i = 1; i <= n; i++)
             {
-                for (int x = z; x > 0; x--)
-                {
-                    Console.Write(x);
-                }
-                Console.WriteLine();
+                answer = i * (i + 1) / 2;
+
+                Console.Write(answer + ", ");
             }
             Console.ReadLine();
         }
